@@ -1,3 +1,4 @@
+require "securerandom"
 require "uri"
 
 require "rpcplus"
@@ -16,6 +17,32 @@ module Flynn
 
     def jobs
       hosts.map(&:jobs).flatten
+    end
+
+    def schedule(image)
+      id = "#{image}-#{SecureRandom.uuid}"
+
+      config = {
+        "Image"        => image,
+        "Tty"          => false,
+        "AttachStdin"  => false,
+        "AttachStdout" => false,
+        "AttachStderr" => false,
+        "OpenStdin"    => false,
+        "StdinOnce"    => false
+      }
+
+      host = hosts.first
+
+      client.request(
+        "Cluster.AddJobs",
+        "Incremental" => true,
+        "HostJobs"    => {
+          host.id => [
+            { "ID" => id, "Config" => config, "TCPPorts" => 1 }
+          ]
+        }
+      ).value
     end
 
     private
