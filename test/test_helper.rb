@@ -6,9 +6,7 @@ require "flynn/grid"
 require "minitest/autorun"
 
 require "support/grid_integration_test"
-require "support/test_rpc_server"
-require "support/test_flynn_host_server"
-require "support/test_discoverd_server"
+require "support/rpcplus_mock_client"
 
 # Only log Celluloid errors
 Celluloid.logger.level = Logger::ERROR
