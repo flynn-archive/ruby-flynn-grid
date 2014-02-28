@@ -30,7 +30,8 @@ module Flynn
     end
 
     def leader
-      discover.service("flynn-host").leader
+      @service ||= discover.service("flynn-host")
+      @service.leader
     end
 
     def discover
