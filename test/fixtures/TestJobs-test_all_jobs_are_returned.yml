@@ -1,0 +1,107 @@
+---
+Agent.Subscribe:
+  0:
+  - Name: flynn-host
+    Addr: 172.20.0.3:1113
+    Online: true
+    Attrs:
+      id: cd3af7568d08
+    Created: 2
+  - Name: ''
+    Addr: ''
+    Online: false
+    Attrs: 
+    Created: 0
+Cluster.ListHosts:
+  0:
+  - cd3af7568d08:
+      ID: cd3af7568d08
+      Jobs:
+      - ID: flynn-etcd-Z7kE9dyqfyPTP9ZNkNP6SA
+        Container: ''
+        Attributes: 
+        Resources: 
+        TCPPorts: 2
+        Config:
+          Hostname: ''
+          Domainname: ''
+          User: ''
+          Memory: 0
+          MemorySwap: 0
+          CpuShares: 0
+          AttachStdin: false
+          AttachStdout: true
+          AttachStderr: true
+          PortSpecs: 
+          ExposedPorts:
+            55000/tcp: {}
+            55001/tcp: {}
+          Tty: false
+          OpenStdin: false
+          StdinOnce: false
+          Env:
+          - PORT=55000
+          - PORT_0=55000
+          - PORT_1=55001
+          - EXTERNAL_IP=172.20.0.3
+          - SD_HOST=172.20.0.3
+          - DISCOVERD=
+          Cmd:
+          - -data-dir=/data
+          - -addr=172.20.0.3:55000
+          - -bind-addr=0.0.0.0:55000
+          - -peer-addr=172.20.0.3:55001
+          - -peer-bind-addr=0.0.0.0:55001
+          - -name=cd3af7568d08
+          - ''
+          Dns: 
+          Image: flynn/etcd
+          Volumes:
+            /data: {}
+          VolumesFrom: ''
+          WorkingDir: ''
+          Entrypoint: 
+          NetworkDisabled: false
+      - ID: flynn-discoverd-S8LuB3qo-lQlO_9LiVZfvg
+        Container: ''
+        Attributes: 
+        Resources: 
+        TCPPorts: 1
+        Config:
+          Hostname: ''
+          Domainname: ''
+          User: ''
+          Memory: 0
+          MemorySwap: 0
+          CpuShares: 0
+          AttachStdin: false
+          AttachStdout: true
+          AttachStderr: true
+          PortSpecs: 
+          ExposedPorts:
+            55002/tcp: {}
+          Tty: false
+          OpenStdin: false
+          StdinOnce: false
+          Env:
+          - PORT=55002
+          - PORT_0=55002
+          - EXTERNAL_IP=172.20.0.3
+          - SD_HOST=172.20.0.3
+          - DISCOVERD=
+          Cmd:
+          - -bind=:55002
+          - -etcd=http://172.17.0.3:55000
+          Dns: 
+          Image: flynn/discoverd
+          Volumes: 
+          VolumesFrom: ''
+          WorkingDir: ''
+          Entrypoint: 
+          NetworkDisabled: false
+      Rules: 
+      Resources:
+        memory:
+          value: 1024
+          overcommit: false
+      Attributes: 
