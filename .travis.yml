@@ -1,0 +1,18 @@
+language: ruby
+
+rvm:
+  - 1.9.3
+  - 2.0.0
+  - 2.1.0
+  - rbx
+
+notifications:
+  irc:
+    channels:
+      - "chat.freenode.net#flynn"
+    use_notice: true
+    skip_join: true
+    on_success: change
+    on_failure: always
+    template:
+      - "%{repository}/%{branch} - %{commit}: %{message} %{build_url}"
