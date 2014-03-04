@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = Flynn::Grid::VERSION
   spec.authors       = ["Lewis Marshall"]
   spec.email         = ["lewis@lmars.net"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
+  spec.summary       = %q{A Flynn Grid client for Ruby}
+  spec.description   = %q{A Flynn Grid client for Ruby}
   spec.homepage      = ""
   spec.license       = "BSD"
 

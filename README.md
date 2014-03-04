@@ -1,6 +1,6 @@
 # Flynn::Grid
 
-TODO: Write a gem description
+A [Flynn Grid](https://flynn.io/docs/architecture#layer-0-the-grid) client for Ruby.
 
 ## Installation
 
