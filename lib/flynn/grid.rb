@@ -30,8 +30,17 @@ module Flynn
         "AttachStderr" => false,
         "OpenStdin"    => false,
         "StdinOnce"    => false,
-        "Env"          => format_env(options[:env] || {})
+        "Env"          => format_env(options[:env] || {}),
+        "Volumes"      => {}
       }
+
+      host_config = {
+        "Binds" => []
+      }
+
+      if options[:volumes]
+        add_volumes(options[:volumes], config, host_config)
+      end
 
       if filter = options[:on]
         hosts = self.hosts.select { |h| h.matches?(filter) }
@@ -41,7 +50,7 @@ module Flynn
 
       jobs = hosts.inject({}) do |jobs, host|
         jobs.merge host.id => [
-          { "ID" => job_id, "Config" => config, "TCPPorts" => 1 }
+          { "ID" => job_id, "Config" => config, "HostConfig" => host_config, "TCPPorts" => 1 }
         ]
       end
 
@@ -76,6 +85,16 @@ module Flynn
     def format_env(env = {})
       env.inject([]) do |env, (key, val)|
         env << "#{key}=#{val}"
+      end
+    end
+
+    def add_volumes(volumes, config, host_config)
+      volumes.each_pair do |volume, bind|
+        config["Volumes"][volume] = {}
+
+        if bind
+          host_config["Binds"] << "#{bind}:#{volume}:rw"
+        end
       end
     end
   end

@@ -52,4 +52,18 @@ class TestJobs < GridIntegrationTest
     assert_equal "BAR", job.env["FOO"]
     assert_equal "QUX", job.env["BAZ"]
   end
+
+  def test_schedule_job_with_volumes
+    volumes = {
+      "/tmp/vol1" => nil,
+      "/tmp/vol2" => "/host/vol2"
+    }
+
+    @grid.schedule "app", on: { name: "n1" }, volumes: volumes
+
+    host = host_with_name("n1")
+    job  = host.jobs[2]
+    assert_match /^app/, job.id
+    assert_equal volumes, job.volumes
+  end
 end
