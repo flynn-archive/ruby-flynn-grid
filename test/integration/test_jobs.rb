@@ -12,7 +12,7 @@ class TestJobs < GridIntegrationTest
     end
   end
 
-  def test_schedule_job
+  def test_schedule_job_without_filter
     jobs = @grid.jobs
     assert_equal 6, jobs.size
 
@@ -22,5 +22,19 @@ class TestJobs < GridIntegrationTest
 
     first_host = @grid.hosts.first
     assert_match /^app/, first_host.jobs[2].id
+  end
+
+  def test_schedule_job_with_filter
+    jobs = @grid.jobs
+    assert_equal 6, jobs.size
+
+    @grid.schedule "app", on: { name: "n2" }
+    jobs = @grid.jobs
+    assert_equal 7, jobs.size
+
+    matching_host = @grid.hosts.detect { |h| h.matches?(name: "n2") }
+    jobs = matching_host.jobs
+    assert_equal 3, jobs.size
+    assert_match /^app/, jobs[2].id
   end
 end

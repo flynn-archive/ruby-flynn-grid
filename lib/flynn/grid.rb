@@ -19,8 +19,8 @@ module Flynn
       hosts.map(&:jobs).flatten
     end
 
-    def schedule(image)
-      id = "#{image}-#{SecureRandom.uuid}"
+    def schedule(image, options = {})
+      job_id = "#{image}-#{SecureRandom.uuid}"
 
       config = {
         "Image"        => image,
@@ -32,16 +32,22 @@ module Flynn
         "StdinOnce"    => false
       }
 
-      host = hosts.first
+      if filter = options[:on]
+        hosts = self.hosts.select { |h| h.matches?(filter) }
+      else
+        hosts = self.hosts.take(1)
+      end
+
+      jobs = hosts.inject({}) do |jobs, host|
+        jobs.merge host.id => [
+          { "ID" => job_id, "Config" => config, "TCPPorts" => 1 }
+        ]
+      end
 
       client.request(
         "Cluster.AddJobs",
         "Incremental" => true,
-        "HostJobs"    => {
-          host.id => [
-            { "ID" => id, "Config" => config, "TCPPorts" => 1 }
-          ]
-        }
+        "HostJobs"    => jobs
       ).value
     end
 
