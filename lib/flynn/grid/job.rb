@@ -24,6 +24,15 @@ module Flynn
         end
       end
 
+      def ports
+        (config["ExposedPorts"] || {}).inject({}) do |ports, (port, _)|
+          port, type = port.split("/")
+          ports[type] ||= []
+          ports[type] << port.to_i
+          ports
+        end
+      end
+
       private
       def volume_binds
         host_config["Binds"] || []

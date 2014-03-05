@@ -31,15 +31,22 @@ module Flynn
         "OpenStdin"    => false,
         "StdinOnce"    => false,
         "Env"          => format_env(options[:env] || {}),
-        "Volumes"      => {}
+        "Volumes"      => {},
+        "ExposedPorts" => {}
       }
 
       host_config = {
-        "Binds" => []
+        "Binds"           => [],
+        "PortBindings"    => {},
+        "PublishAllPorts" => true
       }
 
       if options[:volumes]
         add_volumes(options[:volumes], config, host_config)
+      end
+
+      if options[:ports]
+        add_ports(options[:ports], config, host_config)
       end
 
       if filter = options[:on]
@@ -94,6 +101,19 @@ module Flynn
 
         if bind
           host_config["Binds"] << "#{bind}:#{volume}:rw"
+        end
+      end
+    end
+
+    def add_ports(ports, config, host_config)
+      ports.each_pair do |type, ports|
+        ports.each do |port|
+          key = "#{port}/#{type}"
+          config["ExposedPorts"][key] = {}
+          host_config["PortBindings"][key] = [{
+            "HostIp"   => "0.0.0.0",
+            "HostPort" => port.to_s
+          }]
         end
       end
     end

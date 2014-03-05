@@ -66,4 +66,18 @@ class TestJobs < GridIntegrationTest
     assert_match /^app/, job.id
     assert_equal volumes, job.volumes
   end
+
+  def test_schedule_job_with_ports
+    ports = {
+      "tcp" => [4444, 5555],
+      "udp" => [6666, 7777]
+    }
+
+    @grid.schedule "app", on: { name: "n1" }, ports: ports
+
+    host = host_with_name("n1")
+    job  = host.jobs[2]
+    assert_match /^app/, job.id
+    assert_equal ports, job.ports
+  end
 end
