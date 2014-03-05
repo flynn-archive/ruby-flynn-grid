@@ -9,6 +9,8 @@ require "flynn/grid/job"
 
 module Flynn
   class Grid
+    class NoMatchingHosts < RuntimeError; end
+
     def hosts
       response = client.request("Cluster.ListHosts", {}).value
 
@@ -51,6 +53,7 @@ module Flynn
 
       if filter = options[:on]
         hosts = self.hosts.select { |h| h.matches?(filter) }
+        raise NoMatchingHosts, filter.inspect if hosts.empty?
       else
         hosts = self.hosts.take(1)
       end
