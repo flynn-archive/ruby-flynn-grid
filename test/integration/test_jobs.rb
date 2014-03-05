@@ -1,6 +1,10 @@
 require "test_helper"
 
 class TestJobs < GridIntegrationTest
+  def host_with_name(name)
+    @grid.hosts.detect { |h| h.matches?(name: name) }
+  end
+
   def test_all_jobs_are_returned
     jobs = @grid.jobs
     assert_equal 6, jobs.size
@@ -32,9 +36,20 @@ class TestJobs < GridIntegrationTest
     jobs = @grid.jobs
     assert_equal 7, jobs.size
 
-    matching_host = @grid.hosts.detect { |h| h.matches?(name: "n2") }
+    matching_host = host_with_name("n2")
     jobs = matching_host.jobs
     assert_equal 3, jobs.size
     assert_match /^app/, jobs[2].id
+  end
+
+  def test_schedule_job_with_env
+    env = { "FOO" => "BAR", "BAZ" => "QUX" }
+    @grid.schedule "app", on: { name: "n1" }, env: env
+
+    host = host_with_name("n1")
+    job  = host.jobs[2]
+    assert_match /^app/, job.id
+    assert_equal "BAR", job.env["FOO"]
+    assert_equal "QUX", job.env["BAZ"]
   end
 end

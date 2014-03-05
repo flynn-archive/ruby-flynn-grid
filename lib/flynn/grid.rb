@@ -29,7 +29,8 @@ module Flynn
         "AttachStdout" => false,
         "AttachStderr" => false,
         "OpenStdin"    => false,
-        "StdinOnce"    => false
+        "StdinOnce"    => false,
+        "Env"          => format_env(options[:env] || {})
       }
 
       if filter = options[:on]
@@ -69,6 +70,13 @@ module Flynn
 
     def discover
       @discover ||= Discover::Client.new
+    end
+
+    # Format env into an array of key=val strings
+    def format_env(env = {})
+      env.inject([]) do |env, (key, val)|
+        env << "#{key}=#{val}"
+      end
     end
   end
 end

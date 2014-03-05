@@ -1,0 +1,1151 @@
+---
+Agent.Subscribe:
+  0:
+  - Name: flynn-host
+    Addr: 10.47.2.10:1113
+    Online: true
+    Attrs:
+      id: 6ad569a6b4b4
+    Created: 3
+  - Name: flynn-host
+    Addr: 10.47.2.11:1113
+    Online: true
+    Attrs:
+      id: 2020c0771165
+    Created: 4
+  - Name: flynn-host
+    Addr: 10.47.2.12:1113
+    Online: true
+    Attrs:
+      id: 82149012e84e
+    Created: 6
+  - Name: ''
+    Addr: ''
+    Online: false
+    Attrs: 
+    Created: 0
+Cluster.ListHosts:
+  0:
+  - 2020c0771165:
+      ID: 2020c0771165
+      Jobs:
+      - ID: flynn-etcd-f2a00f34bd8942a3b0c6bfd75397a6cb
+        Container: ''
+        Attributes: 
+        Resources: 
+        TCPPorts: 2
+        Config:
+          Hostname: ''
+          Domainname: ''
+          User: ''
+          Memory: 0
+          MemorySwap: 0
+          CpuShares: 0
+          AttachStdin: false
+          AttachStdout: true
+          AttachStderr: true
+          PortSpecs: 
+          ExposedPorts:
+            55000/tcp: {}
+            55001/tcp: {}
+          Tty: false
+          OpenStdin: false
+          StdinOnce: false
+          Env:
+          - PORT=55000
+          - PORT_0=55000
+          - PORT_1=55001
+          - EXTERNAL_IP=10.47.2.11
+          - SD_HOST=10.47.2.11
+          - DISCOVERD=
+          Cmd:
+          - -data-dir=/data
+          - -addr=10.47.2.11:55000
+          - -bind-addr=0.0.0.0:55000
+          - -peer-addr=10.47.2.11:55001
+          - -peer-bind-addr=0.0.0.0:55001
+          - -name=2020c0771165
+          - -peers=10.47.2.10:55001
+          Dns: 
+          Image: flynn/etcd
+          Volumes:
+            /data: {}
+          VolumesFrom: ''
+          WorkingDir: ''
+          Entrypoint: 
+          NetworkDisabled: false
+        HostConfig:
+          Binds: 
+          ContainerIDFile: ''
+          LxcConf: 
+          Privileged: false
+          PortBindings:
+            55000/tcp:
+            - HostIp: ''
+              HostPort: '55000'
+            55001/tcp:
+            - HostIp: ''
+              HostPort: '55001'
+          Links: 
+          PublishAllPorts: true
+      - ID: flynn-discoverd-3adf10745bd045959360d7579e1ac76f
+        Container: ''
+        Attributes: 
+        Resources: 
+        TCPPorts: 1
+        Config:
+          Hostname: ''
+          Domainname: ''
+          User: ''
+          Memory: 0
+          MemorySwap: 0
+          CpuShares: 0
+          AttachStdin: false
+          AttachStdout: true
+          AttachStderr: true
+          PortSpecs: 
+          ExposedPorts:
+            1111/tcp: {}
+          Tty: false
+          OpenStdin: false
+          StdinOnce: false
+          Env:
+          - PORT=1111
+          - PORT_0=1111
+          - EXTERNAL_IP=10.47.2.11
+          - SD_HOST=10.47.2.11
+          - DISCOVERD=
+          Cmd:
+          - -bind=:1111
+          - -etcd=http://172.17.0.3:55000
+          Dns: 
+          Image: flynn/discoverd
+          Volumes: 
+          VolumesFrom: ''
+          WorkingDir: ''
+          Entrypoint: 
+          NetworkDisabled: false
+        HostConfig:
+          Binds: 
+          ContainerIDFile: ''
+          LxcConf: 
+          Privileged: false
+          PortBindings:
+            1111/tcp:
+            - HostIp: ''
+              HostPort: '1111'
+          Links: 
+          PublishAllPorts: true
+      Rules: 
+      Resources:
+        memory:
+          value: 1024
+          overcommit: false
+      Attributes:
+        name: n1
+    6ad569a6b4b4:
+      ID: 6ad569a6b4b4
+      Jobs:
+      - ID: flynn-etcd-3f5995b5e66c40689606d09b01144e15
+        Container: ''
+        Attributes: 
+        Resources: 
+        TCPPorts: 2
+        Config:
+          Hostname: ''
+          Domainname: ''
+          User: ''
+          Memory: 0
+          MemorySwap: 0
+          CpuShares: 0
+          AttachStdin: false
+          AttachStdout: true
+          AttachStderr: true
+          PortSpecs: 
+          ExposedPorts:
+            55000/tcp: {}
+            55001/tcp: {}
+          Tty: false
+          OpenStdin: false
+          StdinOnce: false
+          Env:
+          - PORT=55000
+          - PORT_0=55000
+          - PORT_1=55001
+          - EXTERNAL_IP=10.47.2.10
+          - SD_HOST=10.47.2.10
+          - DISCOVERD=
+          Cmd:
+          - -data-dir=/data
+          - -addr=10.47.2.10:55000
+          - -bind-addr=0.0.0.0:55000
+          - -peer-addr=10.47.2.10:55001
+          - -peer-bind-addr=0.0.0.0:55001
+          - -name=6ad569a6b4b4
+          - ''
+          Dns: 
+          Image: flynn/etcd
+          Volumes:
+            /data: {}
+          VolumesFrom: ''
+          WorkingDir: ''
+          Entrypoint: 
+          NetworkDisabled: false
+        HostConfig:
+          Binds: 
+          ContainerIDFile: ''
+          LxcConf: 
+          Privileged: false
+          PortBindings:
+            55000/tcp:
+            - HostIp: ''
+              HostPort: '55000'
+            55001/tcp:
+            - HostIp: ''
+              HostPort: '55001'
+          Links: 
+          PublishAllPorts: true
+      - ID: flynn-discoverd-b63ff6b3d2fc470cb8462f0133832229
+        Container: ''
+        Attributes: 
+        Resources: 
+        TCPPorts: 1
+        Config:
+          Hostname: ''
+          Domainname: ''
+          User: ''
+          Memory: 0
+          MemorySwap: 0
+          CpuShares: 0
+          AttachStdin: false
+          AttachStdout: true
+          AttachStderr: true
+          PortSpecs: 
+          ExposedPorts:
+            1111/tcp: {}
+          Tty: false
+          OpenStdin: false
+          StdinOnce: false
+          Env:
+          - PORT=1111
+          - PORT_0=1111
+          - EXTERNAL_IP=10.47.2.10
+          - SD_HOST=10.47.2.10
+          - DISCOVERD=
+          Cmd:
+          - -bind=:1111
+          - -etcd=http://172.17.0.3:55000
+          Dns: 
+          Image: flynn/discoverd
+          Volumes: 
+          VolumesFrom: ''
+          WorkingDir: ''
+          Entrypoint: 
+          NetworkDisabled: false
+        HostConfig:
+          Binds: 
+          ContainerIDFile: ''
+          LxcConf: 
+          Privileged: false
+          PortBindings:
+            1111/tcp:
+            - HostIp: ''
+              HostPort: '1111'
+          Links: 
+          PublishAllPorts: true
+      Rules: 
+      Resources:
+        memory:
+          value: 1024
+          overcommit: false
+      Attributes:
+        name: n0
+    82149012e84e:
+      ID: 82149012e84e
+      Jobs:
+      - ID: flynn-etcd-24b2be99d567471bb9cc7794ee228ea7
+        Container: ''
+        Attributes: 
+        Resources: 
+        TCPPorts: 2
+        Config:
+          Hostname: ''
+          Domainname: ''
+          User: ''
+          Memory: 0
+          MemorySwap: 0
+          CpuShares: 0
+          AttachStdin: false
+          AttachStdout: true
+          AttachStderr: true
+          PortSpecs: 
+          ExposedPorts:
+            55000/tcp: {}
+            55001/tcp: {}
+          Tty: false
+          OpenStdin: false
+          StdinOnce: false
+          Env:
+          - PORT=55000
+          - PORT_0=55000
+          - PORT_1=55001
+          - EXTERNAL_IP=10.47.2.12
+          - SD_HOST=10.47.2.12
+          - DISCOVERD=
+          Cmd:
+          - -data-dir=/data
+          - -addr=10.47.2.12:55000
+          - -bind-addr=0.0.0.0:55000
+          - -peer-addr=10.47.2.12:55001
+          - -peer-bind-addr=0.0.0.0:55001
+          - -name=82149012e84e
+          - -peers=10.47.2.10:55001
+          Dns: 
+          Image: flynn/etcd
+          Volumes:
+            /data: {}
+          VolumesFrom: ''
+          WorkingDir: ''
+          Entrypoint: 
+          NetworkDisabled: false
+        HostConfig:
+          Binds: 
+          ContainerIDFile: ''
+          LxcConf: 
+          Privileged: false
+          PortBindings:
+            55000/tcp:
+            - HostIp: ''
+              HostPort: '55000'
+            55001/tcp:
+            - HostIp: ''
+              HostPort: '55001'
+          Links: 
+          PublishAllPorts: true
+      - ID: flynn-discoverd-a51940df6bd54bff9c7d10fb51bbcdec
+        Container: ''
+        Attributes: 
+        Resources: 
+        TCPPorts: 1
+        Config:
+          Hostname: ''
+          Domainname: ''
+          User: ''
+          Memory: 0
+          MemorySwap: 0
+          CpuShares: 0
+          AttachStdin: false
+          AttachStdout: true
+          AttachStderr: true
+          PortSpecs: 
+          ExposedPorts:
+            1111/tcp: {}
+          Tty: false
+          OpenStdin: false
+          StdinOnce: false
+          Env:
+          - PORT=1111
+          - PORT_0=1111
+          - EXTERNAL_IP=10.47.2.12
+          - SD_HOST=10.47.2.12
+          - DISCOVERD=
+          Cmd:
+          - -bind=:1111
+          - -etcd=http://172.17.0.3:55000
+          Dns: 
+          Image: flynn/discoverd
+          Volumes: 
+          VolumesFrom: ''
+          WorkingDir: ''
+          Entrypoint: 
+          NetworkDisabled: false
+        HostConfig:
+          Binds: 
+          ContainerIDFile: ''
+          LxcConf: 
+          Privileged: false
+          PortBindings:
+            1111/tcp:
+            - HostIp: ''
+              HostPort: '1111'
+          Links: 
+          PublishAllPorts: true
+      Rules: 
+      Resources:
+        memory:
+          value: 1024
+          overcommit: false
+      Attributes:
+        name: n2
+  1:
+  - 2020c0771165:
+      ID: 2020c0771165
+      Jobs:
+      - ID: flynn-etcd-f2a00f34bd8942a3b0c6bfd75397a6cb
+        Container: ''
+        Attributes: 
+        Resources: 
+        TCPPorts: 2
+        Config:
+          Hostname: ''
+          Domainname: ''
+          User: ''
+          Memory: 0
+          MemorySwap: 0
+          CpuShares: 0
+          AttachStdin: false
+          AttachStdout: true
+          AttachStderr: true
+          PortSpecs: 
+          ExposedPorts:
+            55000/tcp: {}
+            55001/tcp: {}
+          Tty: false
+          OpenStdin: false
+          StdinOnce: false
+          Env:
+          - PORT=55000
+          - PORT_0=55000
+          - PORT_1=55001
+          - EXTERNAL_IP=10.47.2.11
+          - SD_HOST=10.47.2.11
+          - DISCOVERD=
+          Cmd:
+          - -data-dir=/data
+          - -addr=10.47.2.11:55000
+          - -bind-addr=0.0.0.0:55000
+          - -peer-addr=10.47.2.11:55001
+          - -peer-bind-addr=0.0.0.0:55001
+          - -name=2020c0771165
+          - -peers=10.47.2.10:55001
+          Dns: 
+          Image: flynn/etcd
+          Volumes:
+            /data: {}
+          VolumesFrom: ''
+          WorkingDir: ''
+          Entrypoint: 
+          NetworkDisabled: false
+        HostConfig:
+          Binds: 
+          ContainerIDFile: ''
+          LxcConf: 
+          Privileged: false
+          PortBindings:
+            55000/tcp:
+            - HostIp: ''
+              HostPort: '55000'
+            55001/tcp:
+            - HostIp: ''
+              HostPort: '55001'
+          Links: 
+          PublishAllPorts: true
+      - ID: flynn-discoverd-3adf10745bd045959360d7579e1ac76f
+        Container: ''
+        Attributes: 
+        Resources: 
+        TCPPorts: 1
+        Config:
+          Hostname: ''
+          Domainname: ''
+          User: ''
+          Memory: 0
+          MemorySwap: 0
+          CpuShares: 0
+          AttachStdin: false
+          AttachStdout: true
+          AttachStderr: true
+          PortSpecs: 
+          ExposedPorts:
+            1111/tcp: {}
+          Tty: false
+          OpenStdin: false
+          StdinOnce: false
+          Env:
+          - PORT=1111
+          - PORT_0=1111
+          - EXTERNAL_IP=10.47.2.11
+          - SD_HOST=10.47.2.11
+          - DISCOVERD=
+          Cmd:
+          - -bind=:1111
+          - -etcd=http://172.17.0.3:55000
+          Dns: 
+          Image: flynn/discoverd
+          Volumes: 
+          VolumesFrom: ''
+          WorkingDir: ''
+          Entrypoint: 
+          NetworkDisabled: false
+        HostConfig:
+          Binds: 
+          ContainerIDFile: ''
+          LxcConf: 
+          Privileged: false
+          PortBindings:
+            1111/tcp:
+            - HostIp: ''
+              HostPort: '1111'
+          Links: 
+          PublishAllPorts: true
+      - ID: app-0a4ef6fb-d693-4ac7-869c-31b648741251
+        Container: ''
+        Attributes: 
+        Resources: 
+        TCPPorts: 1
+        Config:
+          Hostname: ''
+          Domainname: ''
+          User: ''
+          Memory: 0
+          MemorySwap: 0
+          CpuShares: 0
+          AttachStdin: false
+          AttachStdout: false
+          AttachStderr: false
+          PortSpecs: 
+          ExposedPorts: 
+          Tty: false
+          OpenStdin: false
+          StdinOnce: false
+          Env:
+          - FOO=BAR
+          - BAZ=QUX
+          Cmd: 
+          Dns: 
+          Image: app
+          Volumes: 
+          VolumesFrom: ''
+          WorkingDir: ''
+          Entrypoint: 
+          NetworkDisabled: false
+        HostConfig: 
+      Rules: 
+      Resources:
+        memory:
+          value: 1024
+          overcommit: false
+      Attributes:
+        name: n1
+    6ad569a6b4b4:
+      ID: 6ad569a6b4b4
+      Jobs:
+      - ID: flynn-etcd-3f5995b5e66c40689606d09b01144e15
+        Container: ''
+        Attributes: 
+        Resources: 
+        TCPPorts: 2
+        Config:
+          Hostname: ''
+          Domainname: ''
+          User: ''
+          Memory: 0
+          MemorySwap: 0
+          CpuShares: 0
+          AttachStdin: false
+          AttachStdout: true
+          AttachStderr: true
+          PortSpecs: 
+          ExposedPorts:
+            55000/tcp: {}
+            55001/tcp: {}
+          Tty: false
+          OpenStdin: false
+          StdinOnce: false
+          Env:
+          - PORT=55000
+          - PORT_0=55000
+          - PORT_1=55001
+          - EXTERNAL_IP=10.47.2.10
+          - SD_HOST=10.47.2.10
+          - DISCOVERD=
+          Cmd:
+          - -data-dir=/data
+          - -addr=10.47.2.10:55000
+          - -bind-addr=0.0.0.0:55000
+          - -peer-addr=10.47.2.10:55001
+          - -peer-bind-addr=0.0.0.0:55001
+          - -name=6ad569a6b4b4
+          - ''
+          Dns: 
+          Image: flynn/etcd
+          Volumes:
+            /data: {}
+          VolumesFrom: ''
+          WorkingDir: ''
+          Entrypoint: 
+          NetworkDisabled: false
+        HostConfig:
+          Binds: 
+          ContainerIDFile: ''
+          LxcConf: 
+          Privileged: false
+          PortBindings:
+            55000/tcp:
+            - HostIp: ''
+              HostPort: '55000'
+            55001/tcp:
+            - HostIp: ''
+              HostPort: '55001'
+          Links: 
+          PublishAllPorts: true
+      - ID: flynn-discoverd-b63ff6b3d2fc470cb8462f0133832229
+        Container: ''
+        Attributes: 
+        Resources: 
+        TCPPorts: 1
+        Config:
+          Hostname: ''
+          Domainname: ''
+          User: ''
+          Memory: 0
+          MemorySwap: 0
+          CpuShares: 0
+          AttachStdin: false
+          AttachStdout: true
+          AttachStderr: true
+          PortSpecs: 
+          ExposedPorts:
+            1111/tcp: {}
+          Tty: false
+          OpenStdin: false
+          StdinOnce: false
+          Env:
+          - PORT=1111
+          - PORT_0=1111
+          - EXTERNAL_IP=10.47.2.10
+          - SD_HOST=10.47.2.10
+          - DISCOVERD=
+          Cmd:
+          - -bind=:1111
+          - -etcd=http://172.17.0.3:55000
+          Dns: 
+          Image: flynn/discoverd
+          Volumes: 
+          VolumesFrom: ''
+          WorkingDir: ''
+          Entrypoint: 
+          NetworkDisabled: false
+        HostConfig:
+          Binds: 
+          ContainerIDFile: ''
+          LxcConf: 
+          Privileged: false
+          PortBindings:
+            1111/tcp:
+            - HostIp: ''
+              HostPort: '1111'
+          Links: 
+          PublishAllPorts: true
+      Rules: 
+      Resources:
+        memory:
+          value: 1024
+          overcommit: false
+      Attributes:
+        name: n0
+    82149012e84e:
+      ID: 82149012e84e
+      Jobs:
+      - ID: flynn-etcd-24b2be99d567471bb9cc7794ee228ea7
+        Container: ''
+        Attributes: 
+        Resources: 
+        TCPPorts: 2
+        Config:
+          Hostname: ''
+          Domainname: ''
+          User: ''
+          Memory: 0
+          MemorySwap: 0
+          CpuShares: 0
+          AttachStdin: false
+          AttachStdout: true
+          AttachStderr: true
+          PortSpecs: 
+          ExposedPorts:
+            55000/tcp: {}
+            55001/tcp: {}
+          Tty: false
+          OpenStdin: false
+          StdinOnce: false
+          Env:
+          - PORT=55000
+          - PORT_0=55000
+          - PORT_1=55001
+          - EXTERNAL_IP=10.47.2.12
+          - SD_HOST=10.47.2.12
+          - DISCOVERD=
+          Cmd:
+          - -data-dir=/data
+          - -addr=10.47.2.12:55000
+          - -bind-addr=0.0.0.0:55000
+          - -peer-addr=10.47.2.12:55001
+          - -peer-bind-addr=0.0.0.0:55001
+          - -name=82149012e84e
+          - -peers=10.47.2.10:55001
+          Dns: 
+          Image: flynn/etcd
+          Volumes:
+            /data: {}
+          VolumesFrom: ''
+          WorkingDir: ''
+          Entrypoint: 
+          NetworkDisabled: false
+        HostConfig:
+          Binds: 
+          ContainerIDFile: ''
+          LxcConf: 
+          Privileged: false
+          PortBindings:
+            55000/tcp:
+            - HostIp: ''
+              HostPort: '55000'
+            55001/tcp:
+            - HostIp: ''
+              HostPort: '55001'
+          Links: 
+          PublishAllPorts: true
+      - ID: flynn-discoverd-a51940df6bd54bff9c7d10fb51bbcdec
+        Container: ''
+        Attributes: 
+        Resources: 
+        TCPPorts: 1
+        Config:
+          Hostname: ''
+          Domainname: ''
+          User: ''
+          Memory: 0
+          MemorySwap: 0
+          CpuShares: 0
+          AttachStdin: false
+          AttachStdout: true
+          AttachStderr: true
+          PortSpecs: 
+          ExposedPorts:
+            1111/tcp: {}
+          Tty: false
+          OpenStdin: false
+          StdinOnce: false
+          Env:
+          - PORT=1111
+          - PORT_0=1111
+          - EXTERNAL_IP=10.47.2.12
+          - SD_HOST=10.47.2.12
+          - DISCOVERD=
+          Cmd:
+          - -bind=:1111
+          - -etcd=http://172.17.0.3:55000
+          Dns: 
+          Image: flynn/discoverd
+          Volumes: 
+          VolumesFrom: ''
+          WorkingDir: ''
+          Entrypoint: 
+          NetworkDisabled: false
+        HostConfig:
+          Binds: 
+          ContainerIDFile: ''
+          LxcConf: 
+          Privileged: false
+          PortBindings:
+            1111/tcp:
+            - HostIp: ''
+              HostPort: '1111'
+          Links: 
+          PublishAllPorts: true
+      Rules: 
+      Resources:
+        memory:
+          value: 1024
+          overcommit: false
+      Attributes:
+        name: n2
+Cluster.AddJobs:
+  0:
+  - State:
+      2020c0771165:
+        ID: 2020c0771165
+        Jobs:
+        - ID: flynn-etcd-f2a00f34bd8942a3b0c6bfd75397a6cb
+          Container: ''
+          Attributes: 
+          Resources: 
+          TCPPorts: 2
+          Config:
+            Hostname: ''
+            Domainname: ''
+            User: ''
+            Memory: 0
+            MemorySwap: 0
+            CpuShares: 0
+            AttachStdin: false
+            AttachStdout: true
+            AttachStderr: true
+            PortSpecs: 
+            ExposedPorts:
+              55000/tcp: {}
+              55001/tcp: {}
+            Tty: false
+            OpenStdin: false
+            StdinOnce: false
+            Env:
+            - PORT=55000
+            - PORT_0=55000
+            - PORT_1=55001
+            - EXTERNAL_IP=10.47.2.11
+            - SD_HOST=10.47.2.11
+            - DISCOVERD=
+            Cmd:
+            - -data-dir=/data
+            - -addr=10.47.2.11:55000
+            - -bind-addr=0.0.0.0:55000
+            - -peer-addr=10.47.2.11:55001
+            - -peer-bind-addr=0.0.0.0:55001
+            - -name=2020c0771165
+            - -peers=10.47.2.10:55001
+            Dns: 
+            Image: flynn/etcd
+            Volumes:
+              /data: {}
+            VolumesFrom: ''
+            WorkingDir: ''
+            Entrypoint: 
+            NetworkDisabled: false
+          HostConfig:
+            Binds: 
+            ContainerIDFile: ''
+            LxcConf: 
+            Privileged: false
+            PortBindings:
+              55000/tcp:
+              - HostIp: ''
+                HostPort: '55000'
+              55001/tcp:
+              - HostIp: ''
+                HostPort: '55001'
+            Links: 
+            PublishAllPorts: true
+        - ID: flynn-discoverd-3adf10745bd045959360d7579e1ac76f
+          Container: ''
+          Attributes: 
+          Resources: 
+          TCPPorts: 1
+          Config:
+            Hostname: ''
+            Domainname: ''
+            User: ''
+            Memory: 0
+            MemorySwap: 0
+            CpuShares: 0
+            AttachStdin: false
+            AttachStdout: true
+            AttachStderr: true
+            PortSpecs: 
+            ExposedPorts:
+              1111/tcp: {}
+            Tty: false
+            OpenStdin: false
+            StdinOnce: false
+            Env:
+            - PORT=1111
+            - PORT_0=1111
+            - EXTERNAL_IP=10.47.2.11
+            - SD_HOST=10.47.2.11
+            - DISCOVERD=
+            Cmd:
+            - -bind=:1111
+            - -etcd=http://172.17.0.3:55000
+            Dns: 
+            Image: flynn/discoverd
+            Volumes: 
+            VolumesFrom: ''
+            WorkingDir: ''
+            Entrypoint: 
+            NetworkDisabled: false
+          HostConfig:
+            Binds: 
+            ContainerIDFile: ''
+            LxcConf: 
+            Privileged: false
+            PortBindings:
+              1111/tcp:
+              - HostIp: ''
+                HostPort: '1111'
+            Links: 
+            PublishAllPorts: true
+        - ID: app-0a4ef6fb-d693-4ac7-869c-31b648741251
+          Container: ''
+          Attributes: 
+          Resources: 
+          TCPPorts: 1
+          Config:
+            Hostname: ''
+            Domainname: ''
+            User: ''
+            Memory: 0
+            MemorySwap: 0
+            CpuShares: 0
+            AttachStdin: false
+            AttachStdout: false
+            AttachStderr: false
+            PortSpecs: 
+            ExposedPorts: 
+            Tty: false
+            OpenStdin: false
+            StdinOnce: false
+            Env:
+            - FOO=BAR
+            - BAZ=QUX
+            Cmd: 
+            Dns: 
+            Image: app
+            Volumes: 
+            VolumesFrom: ''
+            WorkingDir: ''
+            Entrypoint: 
+            NetworkDisabled: false
+          HostConfig: 
+        Rules: 
+        Resources:
+          memory:
+            value: 1024
+            overcommit: false
+        Attributes:
+          name: n1
+      6ad569a6b4b4:
+        ID: 6ad569a6b4b4
+        Jobs:
+        - ID: flynn-etcd-3f5995b5e66c40689606d09b01144e15
+          Container: ''
+          Attributes: 
+          Resources: 
+          TCPPorts: 2
+          Config:
+            Hostname: ''
+            Domainname: ''
+            User: ''
+            Memory: 0
+            MemorySwap: 0
+            CpuShares: 0
+            AttachStdin: false
+            AttachStdout: true
+            AttachStderr: true
+            PortSpecs: 
+            ExposedPorts:
+              55000/tcp: {}
+              55001/tcp: {}
+            Tty: false
+            OpenStdin: false
+            StdinOnce: false
+            Env:
+            - PORT=55000
+            - PORT_0=55000
+            - PORT_1=55001
+            - EXTERNAL_IP=10.47.2.10
+            - SD_HOST=10.47.2.10
+            - DISCOVERD=
+            Cmd:
+            - -data-dir=/data
+            - -addr=10.47.2.10:55000
+            - -bind-addr=0.0.0.0:55000
+            - -peer-addr=10.47.2.10:55001
+            - -peer-bind-addr=0.0.0.0:55001
+            - -name=6ad569a6b4b4
+            - ''
+            Dns: 
+            Image: flynn/etcd
+            Volumes:
+              /data: {}
+            VolumesFrom: ''
+            WorkingDir: ''
+            Entrypoint: 
+            NetworkDisabled: false
+          HostConfig:
+            Binds: 
+            ContainerIDFile: ''
+            LxcConf: 
+            Privileged: false
+            PortBindings:
+              55000/tcp:
+              - HostIp: ''
+                HostPort: '55000'
+              55001/tcp:
+              - HostIp: ''
+                HostPort: '55001'
+            Links: 
+            PublishAllPorts: true
+        - ID: flynn-discoverd-b63ff6b3d2fc470cb8462f0133832229
+          Container: ''
+          Attributes: 
+          Resources: 
+          TCPPorts: 1
+          Config:
+            Hostname: ''
+            Domainname: ''
+            User: ''
+            Memory: 0
+            MemorySwap: 0
+            CpuShares: 0
+            AttachStdin: false
+            AttachStdout: true
+            AttachStderr: true
+            PortSpecs: 
+            ExposedPorts:
+              1111/tcp: {}
+            Tty: false
+            OpenStdin: false
+            StdinOnce: false
+            Env:
+            - PORT=1111
+            - PORT_0=1111
+            - EXTERNAL_IP=10.47.2.10
+            - SD_HOST=10.47.2.10
+            - DISCOVERD=
+            Cmd:
+            - -bind=:1111
+            - -etcd=http://172.17.0.3:55000
+            Dns: 
+            Image: flynn/discoverd
+            Volumes: 
+            VolumesFrom: ''
+            WorkingDir: ''
+            Entrypoint: 
+            NetworkDisabled: false
+          HostConfig:
+            Binds: 
+            ContainerIDFile: ''
+            LxcConf: 
+            Privileged: false
+            PortBindings:
+              1111/tcp:
+              - HostIp: ''
+                HostPort: '1111'
+            Links: 
+            PublishAllPorts: true
+        Rules: 
+        Resources:
+          memory:
+            value: 1024
+            overcommit: false
+        Attributes:
+          name: n0
+      82149012e84e:
+        ID: 82149012e84e
+        Jobs:
+        - ID: flynn-etcd-24b2be99d567471bb9cc7794ee228ea7
+          Container: ''
+          Attributes: 
+          Resources: 
+          TCPPorts: 2
+          Config:
+            Hostname: ''
+            Domainname: ''
+            User: ''
+            Memory: 0
+            MemorySwap: 0
+            CpuShares: 0
+            AttachStdin: false
+            AttachStdout: true
+            AttachStderr: true
+            PortSpecs: 
+            ExposedPorts:
+              55000/tcp: {}
+              55001/tcp: {}
+            Tty: false
+            OpenStdin: false
+            StdinOnce: false
+            Env:
+            - PORT=55000
+            - PORT_0=55000
+            - PORT_1=55001
+            - EXTERNAL_IP=10.47.2.12
+            - SD_HOST=10.47.2.12
+            - DISCOVERD=
+            Cmd:
+            - -data-dir=/data
+            - -addr=10.47.2.12:55000
+            - -bind-addr=0.0.0.0:55000
+            - -peer-addr=10.47.2.12:55001
+            - -peer-bind-addr=0.0.0.0:55001
+            - -name=82149012e84e
+            - -peers=10.47.2.10:55001
+            Dns: 
+            Image: flynn/etcd
+            Volumes:
+              /data: {}
+            VolumesFrom: ''
+            WorkingDir: ''
+            Entrypoint: 
+            NetworkDisabled: false
+          HostConfig:
+            Binds: 
+            ContainerIDFile: ''
+            LxcConf: 
+            Privileged: false
+            PortBindings:
+              55000/tcp:
+              - HostIp: ''
+                HostPort: '55000'
+              55001/tcp:
+              - HostIp: ''
+                HostPort: '55001'
+            Links: 
+            PublishAllPorts: true
+        - ID: flynn-discoverd-a51940df6bd54bff9c7d10fb51bbcdec
+          Container: ''
+          Attributes: 
+          Resources: 
+          TCPPorts: 1
+          Config:
+            Hostname: ''
+            Domainname: ''
+            User: ''
+            Memory: 0
+            MemorySwap: 0
+            CpuShares: 0
+            AttachStdin: false
+            AttachStdout: true
+            AttachStderr: true
+            PortSpecs: 
+            ExposedPorts:
+              1111/tcp: {}
+            Tty: false
+            OpenStdin: false
+            StdinOnce: false
+            Env:
+            - PORT=1111
+            - PORT_0=1111
+            - EXTERNAL_IP=10.47.2.12
+            - SD_HOST=10.47.2.12
+            - DISCOVERD=
+            Cmd:
+            - -bind=:1111
+            - -etcd=http://172.17.0.3:55000
+            Dns: 
+            Image: flynn/discoverd
+            Volumes: 
+            VolumesFrom: ''
+            WorkingDir: ''
+            Entrypoint: 
+            NetworkDisabled: false
+          HostConfig:
+            Binds: 
+            ContainerIDFile: ''
+            LxcConf: 
+            Privileged: false
+            PortBindings:
+              1111/tcp:
+              - HostIp: ''
+                HostPort: '1111'
+            Links: 
+            PublishAllPorts: true
+        Rules: 
+        Resources:
+          memory:
+            value: 1024
+            overcommit: false
+        Attributes:
+          name: n2
+    RemainingJobs: 
+    Success: true
